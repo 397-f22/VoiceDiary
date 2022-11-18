@@ -6,6 +6,10 @@ module.exports = {
       fontFamily: {
         graduate: ["Graduate-Regular", "sans-serif"],
       },
+      colors: {
+        primary: "#652CB3",
+        secondary: "#9779F2",
+      },
     },
   },
   plugins: [],
