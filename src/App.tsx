@@ -1,7 +1,7 @@
 import "./App.css";
-
+import Recording from "./components/Recording";
 function App() {
-  return <h1 className="">Voice Diary</h1>;
+  return <Recording/>;
 }
 
 export default App;
