@@ -8,7 +8,7 @@ const NavBar = () => {
   const navigateToHome = () => navigate("/");
   const navigateToMemories = () => navigate("/memories");
   return (
-    <div className="border-red-500 w-full text-center">
+    <div className="border-red-500 w-full text-center mb-10">
       <h1 className="font-graduate text-primary text-4xl p-6">Voice Diary</h1>
       <div className="grid grid-cols-2 mx-10 gap-6">
         <button
