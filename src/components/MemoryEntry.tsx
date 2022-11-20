@@ -9,7 +9,7 @@ interface MemoryEntryProps {
 const MemoryEntry = ({ Entry: { id, title, datetime } }: MemoryEntryProps) => {
   const navigate = useNavigate();
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
-    navigate("/memories/id");
+    navigate(`/memories/${id}`);
   return (
     <div
       role="button"

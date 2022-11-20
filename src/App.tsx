@@ -15,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Recording />} />
+        <Route path="/" element={<Recording data={fakeData} />} />
         <Route
           path="/memories"
           element={<Memories memoryEntries={fakeData} />}
