@@ -10,7 +10,7 @@ const Memories = ({ memoryEntries }: MemoriesProps) => {
   return (
     <>
       <NavBar />
-      <div className="mx-3">
+      <div className="flex flex-col mx-3 gap-3">
         {memoryEntries.map((entry) => (
           <MemoryEntry key={entry.id} Entry={entry} />
         ))}

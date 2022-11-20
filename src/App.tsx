@@ -3,6 +3,13 @@ import Recording from "./components/Recording";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Memories from "./components/Memories";
+import { MemoryEntryType } from "./types/memory";
+
+const fakeData: MemoryEntryType[] = [
+  { id: 0, title: "Math Notes", datetime: new Date() },
+  { id: 1, title: "Shopping List", datetime: new Date() },
+  { id: 2, title: "Vacation Diary", datetime: new Date() },
+];
 
 function App() {
   return (
@@ -11,13 +18,7 @@ function App() {
         <Route path="/" element={<Recording />} />
         <Route
           path="/memories"
-          element={
-            <Memories
-              memoryEntries={[
-                { id: 0, title: "Math Notes", datetime: new Date() },
-              ]}
-            />
-          }
+          element={<Memories memoryEntries={fakeData} />}
         />
       </Routes>
     </BrowserRouter>

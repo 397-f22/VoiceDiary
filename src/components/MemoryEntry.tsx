@@ -14,7 +14,7 @@ const MemoryEntry = ({ Entry: { id, title, datetime } }: MemoryEntryProps) => {
     <div
       role="button"
       onClick={handleClick}
-      className="flex justify-between bg-accent text-black border border-black rounded-md py-3 px-6"
+      className="flex justify-between bg-accent text-black border border-black rounded-md py-3 px-4"
     >
       <p className="flex gap-2 font-mono">
         <span>IMG</span>
