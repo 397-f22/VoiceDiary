@@ -1,1 +1,6 @@
-export type MemoryEntryType = { id: any; title: string; datetime: Date };
+export type MemoryEntryType = {
+  id: any;
+  title: string;
+  datetime: Date;
+  transcript: string;
+};
