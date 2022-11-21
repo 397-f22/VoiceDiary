@@ -27,19 +27,19 @@ const Memories = ({ memoryEntries }: MemoriesProps) => {
   };
 
   return (
-    <div className="flex flex-col w-screen h-screen  bg-gradient-to-tr from-primary to-analog-purple">
+    <div className="flex flex-col w-full h-screen gap-8">
       <NavBar />
-      <div className="flex flex-col py-12 mx-3 gap-3">
+      <div className="flex flex-col gap-4">
         {Object.entries(filteredMemories).map(([key, value]) => {
-          return value.length != 0 ? (
-            <div key={key}>
-              <h2 className="font-mono text-xl pb-2">{key}</h2>
-              {value.map((entry) => (
-                <MemoryEntry key={entry.id} Entry={entry} />
-              ))}{" "}
-            </div>
-          ) : (
-            <div key={key}></div>
+          return (
+            value.length != 0 && (
+              <div className="flex flex-col mx-6 gap-3" key={key}>
+                <h2 className="font-mono text-xl">{key}</h2>
+                {value.map((entry, idx) => (
+                  <MemoryEntry key={idx} Entry={entry} />
+                ))}
+              </div>
+            )
           );
         })}
       </div>

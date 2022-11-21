@@ -10,12 +10,12 @@ module.exports = {
         primary: "#652CB3",
         secondary: "#9779F2",
         accent: "#E0D7FB",
-        'analog-blue': "#7998f2", 
-        'analog-purple': '#d479f2'
+        "analog-blue": "#7998f2",
+        "analog-purple": "#d479f2",
       },
-      gridTemplateRows: { 
-        'recording' : '5fr 1fr'
-      }
+      gridTemplateRows: {
+        recording: "5fr 1fr",
+      },
     },
   },
   plugins: [],
