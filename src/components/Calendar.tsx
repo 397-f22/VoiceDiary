@@ -1,15 +1,10 @@
-import { useNavigate, useLocation } from "react-router-dom";
-import { clsx } from "clsx";
-import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 
-const VoiceCalendar = () => {
-
-  const [value, onChange] = useState(new Date());
- 
+// TODO: add type
+const VoiceCalendar = ({ selectedDate, setSelectedDate }: any) => {
   return (
-    <div>
-        <Calendar onChange={onChange} value={value} />
+    <div className="mx-6">
+      <Calendar value={selectedDate} onChange={setSelectedDate} />
     </div>
   );
 };
