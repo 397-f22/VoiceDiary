@@ -13,6 +13,7 @@
     "@speechly/speech-recognition-polyfill": "^1.2.0",
     "clsx": "^1.2.1",
     "react": "^18.2.0",
+    "react-calendar": "^4.0.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.24",
+    "@types/react-calendar": "^3.9.0",
     "@types/react-dom": "^18.0.8",
     "@types/react-speech-recognition": "^3.9.0",
     "@vitejs/plugin-react": "^2.2.0",

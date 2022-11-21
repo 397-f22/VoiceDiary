@@ -1,6 +1,7 @@
 import { MemoryEntryType } from "../types/memory";
 import MemoryEntry from "./MemoryEntry";
 import NavBar from "./NavBar";
+import VoiceCalender from "./Calendar";
 
 interface MemoriesProps {
   memoryEntries: MemoryEntryType[];
@@ -29,6 +30,7 @@ const Memories = ({ memoryEntries }: MemoriesProps) => {
   return (
     <div className="flex flex-col w-full h-screen gap-8">
       <NavBar />
+      <VoiceCalender />
       <div className="flex flex-col gap-4">
         {Object.entries(filteredMemories).map(([key, value]) => {
           return (
