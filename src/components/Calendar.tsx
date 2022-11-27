@@ -1,23 +1,33 @@
-import Calendar from 'react-calendar';
+import Calendar, { CalendarTileProperties } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 // TODO: add type
 
+const VoiceCalendar = ({
+  selectedDate,
+  setSelectedDate,
+  memoryDates,
+}: {
+  selectedDate: Date;
+  setSelectedDate: React.Dispatch<React.SetStateAction<Date>>;
+  memoryDates: Date[];
+}) => {
+  const tileClassName = ({ date }: CalendarTileProperties) => {
+    return memoryDates.find(
+      (memDate: Date) =>
+        memDate.getMonth() === date.getMonth() &&
+        memDate.getDate() === date.getDate()
+    )
+      ? 'bg-accent'
+      : '';
+  };
 
-
-const VoiceCalendar = ({ selectedDate, setSelectedDate, memoryDates }: any) => {
-  const tileClassName = ({ date, view }: any ) => {
-    if (memoryDates.find(({memdate} : any) => memdate === date)) {
-      return 'highlightedDates';
-    }
-    return ''; 
-  }
-  
-  
   return (
     <div className="mx-6">
-      <Calendar value={selectedDate}
-                onChange={setSelectedDate}
-                tileClassName={tileClassName} />
+      <Calendar
+        value={selectedDate}
+        onChange={setSelectedDate}
+        tileClassName={tileClassName}
+      />
     </div>
   );
 };

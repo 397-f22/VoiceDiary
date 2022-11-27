@@ -21,7 +21,7 @@ const Memories = ({ memoryEntries }: MemoriesProps) => {
       <VoiceCalender
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
-        memoryDates={memoryEntries.map((entry) => entry.datetime.getDate())}
+        memoryDates={memoryEntries.map((entry) => entry.datetime)}
       />
       <div className="flex flex-col gap-4">
         <div className="flex flex-col mx-6 gap-3">
