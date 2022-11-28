@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "serve": "vite preview",
+    "test": "vitest",
+    "cy:open": "cypress open --e2e",
+    "em:start": "firebase emulators:start --import=./saved-data --export-on-exit",
+    "em:run": "firebase emulators:exec --import=./saved-data 'npm start'"
   },
   "dependencies": {
     "@speechly/react-client": "^2.2.0",
@@ -21,15 +25,19 @@
     "regenerator-runtime": "^0.13.11"
   },
   "devDependencies": {
+    "@testing-library/react": "^13.3.0",
     "@types/react": "^18.0.24",
     "@types/react-calendar": "^3.9.0",
     "@types/react-dom": "^18.0.8",
     "@types/react-speech-recognition": "^3.9.0",
     "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.13",
+    "cypress": "^11.2.0",
+    "jsdom": "^20.0.3",
     "postcss": "^8.4.19",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.6.4",
-    "vite": "^3.2.3"
+    "vite": "^3.2.3",
+    "vitest": "^0.25.1"
   }
 }
