@@ -1,6 +1,5 @@
 import Calendar, { CalendarTileProperties } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-// TODO: add type
 
 const VoiceCalendar = ({
   selectedDate,
