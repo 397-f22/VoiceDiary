@@ -1,16 +1,16 @@
-import { createSpeechlySpeechRecognition } from "@speechly/speech-recognition-polyfill";
-import clsx from "clsx";
-import { useEffect, useState } from "react";
-import "regenerator-runtime";
+import { createSpeechlySpeechRecognition } from '@speechly/speech-recognition-polyfill';
+import clsx from 'clsx';
+import { useEffect, useState } from 'react';
+import 'regenerator-runtime';
 import SpeechRecognition, {
   useSpeechRecognition,
-} from "react-speech-recognition";
-import { MemoryEntryType } from "../types/memory";
-import { toTwelveHourTime } from "../utilities/time";
-import NavBar from "./NavBar";
-import { useNavigate } from "react-router";
+} from 'react-speech-recognition';
+import { MemoryEntryType } from '../types/memory';
+import { toTwelveHourTime } from '../utilities/time';
+import NavBar from './NavBar';
+import { useNavigate } from 'react-router';
 
-const appId = "aa184f20-21ba-415b-acd1-956e43e43beb";
+const appId = 'aa184f20-21ba-415b-acd1-956e43e43beb';
 const SpeechlySpeechRecognition = createSpeechlySpeechRecognition(appId);
 SpeechRecognition.applyPolyfill(SpeechlySpeechRecognition);
 
@@ -24,12 +24,12 @@ const Recording = ({ data }: RecordingProps) => {
 
   const [entry, setEntry] = useState({
     id: data[data.length - 1].id + 1 || 0,
-    title: "",
+    title: '',
     datetime: new Date(),
-    transcript: "",
+    transcript: '',
   });
 
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
   const { transcript, listening, browserSupportsSpeechRecognition } =
     useSpeechRecognition();
 
@@ -48,10 +48,10 @@ const Recording = ({ data }: RecordingProps) => {
 
   const stopListening = () => {
     SpeechRecognition.stopListening();
-    if (entry.title == "") entry.title = "Untitled";
+    if (entry.title == '') entry.title = 'Untitled';
     data.push({
       ...entry,
-      title: title || "Untitled",
+      title: title || 'Untitled',
       transcript,
     });
     navigate(`/memories/${entry.id}`);
@@ -66,7 +66,7 @@ const Recording = ({ data }: RecordingProps) => {
             <div className="h-full">
               <div className="grid grid-cols-2 items-center mx-1">
                 <p className="text-xl font-graduate m-1 overflow-hidden text-ellipsis">
-                  {title || "Untitled"}
+                  {title || 'Untitled'}
                 </p>
                 <p className="text-xs justify-self-end">
                   {toTwelveHourTime(entry.datetime)}
@@ -100,9 +100,9 @@ const Recording = ({ data }: RecordingProps) => {
         <div className="flex justify-center items-center w-full">
           <button
             className={clsx(
-              "transition-all duration-1000 w-12 h-12 bg-red-500",
-              !listening && "rounded-3xl",
-              listening && "rounded-md "
+              'transition-all duration-1000 w-12 h-12 bg-red-500',
+              !listening && 'rounded-3xl',
+              listening && 'rounded-md '
             )}
             onClick={() => (listening ? stopListening() : startListening())}
           />

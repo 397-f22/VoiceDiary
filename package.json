@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "vitest",
+    "test:ui": "vitest --ui",
     "cy:open": "cypress open --e2e",
     "em:start": "firebase emulators:start --import=./saved-data --export-on-exit",
     "em:run": "firebase emulators:exec --import=./saved-data 'npm start'"
@@ -31,6 +32,7 @@
     "@types/react-dom": "^18.0.8",
     "@types/react-speech-recognition": "^3.9.0",
     "@vitejs/plugin-react": "^2.2.0",
+    "@vitest/ui": "^0.25.3",
     "autoprefixer": "^10.4.13",
     "cypress": "^11.2.0",
     "jsdom": "^20.0.3",
