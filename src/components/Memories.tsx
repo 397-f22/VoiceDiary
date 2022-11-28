@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MemoryEntryType } from '../types/memory';
 import MemoryEntry from './MemoryEntry';
 import NavBar from './NavBar';
-import VoiceCalender from './Calendar';
+import VoiceCalendar from './Calendar';
 
 interface MemoriesProps {
   memoryEntries: MemoryEntryType[];
@@ -18,11 +18,13 @@ const Memories = ({ memoryEntries }: MemoriesProps) => {
   return (
     <div className="flex flex-col w-full h-screen gap-8">
       <NavBar />
-      <VoiceCalender
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-        memoryDates={memoryEntries.map((entry) => entry.datetime)}
-      />
+      <div className="mx-auto">
+        <VoiceCalendar
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          memoryDates={memoryEntries.map((entry) => entry.datetime)}
+        />
+      </div>
       <div className="flex flex-col gap-4">
         <div className="flex flex-col mx-6 gap-3">
           <h2 className="font-mono text-xl">{selectedDate.toDateString()}</h2>
