@@ -1,5 +1,5 @@
 import { describe, it, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from './App';
 import { useSpeechRecognition } from 'react-speech-recognition';
 
