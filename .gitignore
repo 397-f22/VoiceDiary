@@ -134,3 +134,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Coverage results
+coverage/
