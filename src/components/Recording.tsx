@@ -105,6 +105,7 @@ const Recording = ({ data }: RecordingProps) => {
               listening && 'rounded-md '
             )}
             onClick={() => (listening ? stopListening() : startListening())}
+            data-testid="record-btn"
           />
         </div>
       </div>

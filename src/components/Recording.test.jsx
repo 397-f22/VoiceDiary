@@ -1,7 +1,8 @@
 import { describe, it, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Recording from './Recording';
+import MemoryRecord from './MemoryRecord';
 import { useSpeechRecognition } from 'react-speech-recognition';
 
 vi.mock('react-speech-recognition');
@@ -10,6 +11,12 @@ const mockUseSpeechRecognitionBrowserNotSupport = {
   transcript: '',
   listening: false,
   browserSupportsSpeechRecognition: false,
+};
+
+const mockUseSpeechRecognitionBrowserListeningWithTranscript = {
+  transcript: 'some text',
+  listening: true,
+  browserSupportsSpeechRecognition: true,
 };
 
 const fakeData = [
@@ -38,6 +45,40 @@ describe('record page tests', () => {
 
     expect(
       screen.getByText("Browser doesn't support speech recognition.")
+    ).toBeDefined();
+  });
+
+  it('should save the transcript with the title and navigate to the memory record page when the stop button is clicked', () => {
+    useSpeechRecognition
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      )
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      );
+
+    render(
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Recording data={fakeData} />} />
+          <Route
+            path="/memories/:id"
+            element={<MemoryRecord data={fakeData} />}
+          />
+        </Routes>
+      </BrowserRouter>
+    );
+
+    expect(screen.getByText('Voice Diary')).toBeDefined();
+    const recordBtn = screen.getByTestId('record-btn');
+    fireEvent.click(recordBtn);
+
+    expect(screen.getByText('Untitled')).toBeDefined();
+    expect(screen.getByText('Transcript')).toBeDefined();
+    expect(
+      screen.getByText(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript.transcript
+      )
     ).toBeDefined();
   });
 });
