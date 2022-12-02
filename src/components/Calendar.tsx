@@ -1,5 +1,5 @@
 import Calendar, { CalendarTileProperties } from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import './../components/Calendar.css';
 
 const VoiceCalendar = ({
   selectedDate,
@@ -11,6 +11,7 @@ const VoiceCalendar = ({
   memoryDates: Date[];
 }) => {
   const tileClassName = ({ date }: CalendarTileProperties) => {
+    // console.log(memoryDates);
     return memoryDates.find(
       (memDate: Date) =>
         memDate.getMonth() === date.getMonth() &&

@@ -12,7 +12,9 @@ const Memories = ({ memoryEntries }: MemoriesProps) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const filteredMems = memoryEntries.filter(
-    (entry) => entry.datetime.getDate() === selectedDate.getDate()
+    (entry) =>
+      entry.datetime.getDate() === selectedDate.getDate() &&
+      entry.datetime.getMonth() === selectedDate.getMonth()
   );
 
   return (
@@ -28,9 +30,15 @@ const Memories = ({ memoryEntries }: MemoriesProps) => {
       <div className="flex flex-col gap-4">
         <div className="flex flex-col mx-6 gap-3">
           <h2 className="font-mono text-xl">{selectedDate.toDateString()}</h2>
-          {filteredMems.map((entry, idx) => (
-            <MemoryEntry key={idx} Entry={entry} />
-          ))}
+          {filteredMems.length > 0 ? (
+            filteredMems.map((entry, idx) => (
+              <MemoryEntry key={idx} Entry={entry} />
+            ))
+          ) : (
+            <p className="font-mono bg-accent p-3 rounded-md text-center">
+              You did not record any entries on this date!
+            </p>
+          )}
         </div>
       </div>
     </div>
