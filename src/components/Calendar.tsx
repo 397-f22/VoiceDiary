@@ -11,7 +11,7 @@ const VoiceCalendar = ({
   memoryDates: Date[];
 }) => {
   const tileClassName = ({ date }: CalendarTileProperties) => {
-    console.log(memoryDates);
+    // console.log(memoryDates);
     return memoryDates.find(
       (memDate: Date) =>
         memDate.getMonth() === date.getMonth() &&

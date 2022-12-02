@@ -105,7 +105,7 @@
 }
 .react-calendar__tile--active {
   background: orange;
-  color: white;
+  color: black;
 }
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
