@@ -28,9 +28,15 @@ const Memories = ({ memoryEntries }: MemoriesProps) => {
       <div className="flex flex-col gap-4">
         <div className="flex flex-col mx-6 gap-3">
           <h2 className="font-mono text-xl">{selectedDate.toDateString()}</h2>
-          {filteredMems.map((entry, idx) => (
-            <MemoryEntry key={idx} Entry={entry} />
-          ))}
+          {filteredMems.length > 0 ? (
+            filteredMems.map((entry, idx) => (
+              <MemoryEntry key={idx} Entry={entry} />
+            ))
+          ) : (
+            <p className="font-mono bg-accent p-3 rounded-md text-center">
+              You did not record any entries on this date!
+            </p>
+          )}
         </div>
       </div>
     </div>
