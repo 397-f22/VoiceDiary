@@ -87,6 +87,7 @@ const Recording = ({ data }: RecordingProps) => {
                 onChange={(e) => setTitle(e.currentTarget.value)}
                 className="transform-all duration-500 focus:scale-105 mx-2 py-3 rounded-full text-center font-serif border-2 border-t-0 border-b-0 border-x-secondary"
                 placeholder="Title"
+                autoComplete="off"
               />
               <label
                 htmlFor="memory-title"

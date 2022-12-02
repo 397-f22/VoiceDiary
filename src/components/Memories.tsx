@@ -14,7 +14,8 @@ const Memories = ({ memoryEntries }: MemoriesProps) => {
   const filteredMems = memoryEntries.filter(
     (entry) =>
       entry.datetime.getDate() === selectedDate.getDate() &&
-      entry.datetime.getMonth() === selectedDate.getMonth()
+      entry.datetime.getMonth() === selectedDate.getMonth() &&
+      entry.datetime.getFullYear() === selectedDate.getFullYear()
   );
 
   return (

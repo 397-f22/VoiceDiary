@@ -14,8 +14,9 @@ const VoiceCalendar = ({
     // console.log(memoryDates);
     return memoryDates.find(
       (memDate: Date) =>
+        memDate.getDate() === date.getDate() &&
         memDate.getMonth() === date.getMonth() &&
-        memDate.getDate() === date.getDate()
+        memDate.getFullYear() === date.getFullYear()
     )
       ? 'bg-accent'
       : '';
