@@ -12,7 +12,9 @@ const Memories = ({ memoryEntries }: MemoriesProps) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const filteredMems = memoryEntries.filter(
-    (entry) => entry.datetime.getDate() === selectedDate.getDate()
+    (entry) =>
+      entry.datetime.getDate() === selectedDate.getDate() &&
+      entry.datetime.getMonth() === selectedDate.getMonth()
   );
 
   return (
