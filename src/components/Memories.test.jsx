@@ -49,8 +49,28 @@ describe('memories page tests', () => {
     expect(screen.getByText('Voice Diary')).toBeDefined();
     const memoriesBtn = screen.getByTestId('memories-btn')
     fireEvent.click(memoriesBtn)
-    expect(screen.getByText('You did not record any entries on this date!')).toBeDefined();
-    expect(screen.getByText('December 2022')).toBeDefined();
+    expect(screen.getByText(/December 2022/i)).toBeDefined();
+
+  });
+
+
+  it('should show nothing rendered on the current date', () => {
+    useSpeechRecognition
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      )
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      );
+
+    render(
+      <App/>
+    );
+
+    expect(screen.getByText('Voice Diary')).toBeDefined();
+    const memoriesBtn = screen.getByTestId('memories-btn')
+    fireEvent.click(memoriesBtn)
+    expect(screen.getByText(/You did not record any entries on this date!/i)).toBeDefined();
 
   });
 });
