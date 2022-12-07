@@ -26,6 +26,7 @@ const NavBar = () => {
             isMemoriesPage && "bg-secondary text-white"
           )}
           onClick={navigateToMemories}
+          data-testid ="memories-btn"
         >
           Memories
         </button>

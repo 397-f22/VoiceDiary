@@ -24,3 +24,5 @@ describe('landing page tests', () => {
     expect(screen.getByText('Memories')).toBeDefined();
   });
 });
+
+
