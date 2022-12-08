@@ -92,4 +92,23 @@ describe('memories page tests', () => {
 
   }); 
 
+  it('should show date rendered on the current date', () => {
+    useSpeechRecognition
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      )
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      );
+
+    render(
+      <App/>
+    );
+
+    expect(screen.getByText('Voice Diary')).toBeDefined();
+    const datetime = screen.queryByText(/"November 10, 2022 10:01:00"/i);
+    expect(datetime).toBeDefined();
+
+  });
+
 });
