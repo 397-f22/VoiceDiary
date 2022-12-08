@@ -6,6 +6,7 @@ import MemoryRecord from './MemoryRecord';
 import { useSpeechRecognition } from 'react-speech-recognition';
 import Memories from "./Memories"
 import App from '../App'
+import MemoryEntry from './MemoryEntry';
 
 vi.mock('react-speech-recognition');
 
@@ -111,4 +112,33 @@ describe('memories page tests', () => {
 
   });
 
+  it('should navigate to the memory record page and display the transcript of that record when a record is selected', () => {
+    useSpeechRecognition
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      )
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      );
+
+    render(
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Recording data={fakeData} />} />
+          <Route
+            path="/memories/:id"
+            element={<MemoryEntry data={fakeData}/>}
+          />
+        </Routes>
+      </BrowserRouter>
+    );
+
+    expect(screen.getByText('Voice Diary')).toBeDefined();   
+    const datetime = screen.queryByText(/"November 10, 2022 10:01:00"/i);
+    fireEvent.click(datetime);
+
+    expect(screen.getByText('Math Notes')).toBeDefined();
+    expect(screen.getByText('some text')).toBeFalsy();
+
+  });
 });
