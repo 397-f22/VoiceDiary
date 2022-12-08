@@ -3,9 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Recording from './Recording';
 import MemoryRecord from './MemoryRecord';
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from 'react-speech-recognition';
+import { useSpeechRecognition } from 'react-speech-recognition';
 
 vi.mock('react-speech-recognition');
 
