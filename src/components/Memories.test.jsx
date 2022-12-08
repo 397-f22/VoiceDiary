@@ -73,4 +73,23 @@ describe('memories page tests', () => {
     expect(screen.getByText(/You did not record any entries on this date!/i)).toBeDefined();
 
   });
+
+  it('shows the transcript', () => {
+    useSpeechRecognition
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      )
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      );
+
+    render(
+      <App/>
+    );
+
+    const transcript = screen.queryByText(/"some text"/i);
+    expect(transcript).toBeDefined();
+
+  }); 
+
 });
