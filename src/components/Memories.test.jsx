@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, MemoryRouter, Routes, Route } from 'react-router-dom';
 import Recording from './Recording';
 import MemoryRecord from './MemoryRecord';
 import { useSpeechRecognition } from 'react-speech-recognition';
@@ -33,6 +33,32 @@ const fakeData = [
 ];
 
 describe('memories page tests', () => {
+  it('should display the transcript of a record when selected', () => {
+    useSpeechRecognition
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      )
+      .mockReturnValueOnce(
+        mockUseSpeechRecognitionBrowserListeningWithTranscript
+      );
+
+      const route = '/memories/0';
+      render(
+        <MemoryRouter initialEntries={[route]}>
+          <Routes>
+            <Route path="/" element={<Recording data={fakeData} />} />
+            <Route path = '/memories/:id'
+              element={<MemoryRecord data={fakeData} />}
+            />
+          </Routes>
+        </MemoryRouter>
+      );
+
+    expect(screen.getByText('Voice Diary')).toBeDefined();   
+    expect(screen.getByText('Math Notes')).toBeDefined();
+    expect(screen.getByText(/coordinate systems/));
+
+  });
 
   it('should show calendar when the page is rendered ', () => {
     useSpeechRecognition
@@ -109,36 +135,6 @@ describe('memories page tests', () => {
     expect(screen.getByText('Voice Diary')).toBeDefined();
     const datetime = screen.queryByText(/"November 10, 2022 10:01:00"/i);
     expect(datetime).toBeDefined();
-
-  });
-
-  it('should navigate to the memory record page and display the transcript of that record when a record is selected', () => {
-    useSpeechRecognition
-      .mockReturnValueOnce(
-        mockUseSpeechRecognitionBrowserListeningWithTranscript
-      )
-      .mockReturnValueOnce(
-        mockUseSpeechRecognitionBrowserListeningWithTranscript
-      );
-
-    render(
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Recording data={fakeData} />} />
-          <Route
-            path="/memories/:id"
-            element={<MemoryEntry data={fakeData}/>}
-          />
-        </Routes>
-      </BrowserRouter>
-    );
-
-    expect(screen.getByText('Voice Diary')).toBeDefined();   
-    const datetime = screen.queryByText(/"November 10, 2022 10:01:00"/i);
-    fireEvent.click(datetime);
-
-    expect(screen.getByText('Math Notes')).toBeDefined();
-    expect(screen.getByText('some text')).toBeFalsy();
 
   });
 });
